@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 			extensionsContainer.innerHTML = '';
 			const filtered = extensions.filter(ext => {
 				if (filter === 'all') return true;
-				return filter === 'active' ? ext.active : !ext.active;
+				return filter === 'active' ? ext.isActive : !ext.isActive;
 			  });
 			 
 			  if (filtered.length === 0) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 
 			  filtered.forEach(ext => {
 				const extCard = document.createElement('div');
-				extCard.className = `ext-card ${ext.active ? '' : 'inactive'}`;
+				extCard.className = `ext-card ${ext.isActive ? '' : 'inactive'}`;
 				extCard.innerHTML = `
 					<img src="${ext.logo}" alt="${ext.name}" class="extension-icon">
 					<div class="extension-info">
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 						<div class="extension-description">${ext.description}</div>
 					</div>
 					<label class="toggle-switch">
-						<input type="checkbox" ${ext.active ? 'checked' : ''} data-id="${ext.name}">
+						<input type="checkbox" ${ext.isActive ? 'checked' : ''} data-id="${ext.name}">
 						<span class="toggle-slider"></span>
 					</label>	
 				`;
