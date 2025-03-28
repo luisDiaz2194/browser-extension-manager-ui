@@ -59,14 +59,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 extCard.innerHTML = `
                     <div class="extension-info">
 					<img src="${ext.logo}" alt="${ext.name}" class="extension-icon">
-                        <div class="extension-name">${ext.name}</div>
+                      <div class="extension-info-content">
+					    <div class="extension-name">${ext.name}</div>
                         <div class="extension-description">${ext.description}</div>
+						</div>
                     </div>
-                    <span class="extension-status">${ext.isActive ? 'Remove' : 'Add'}</span>
+					<div class="clear"></div>
+                   <div class="ext-footer">
+				  <span class="extension-status">${ext.isActive ? 'Remove' : 'Add'}</span>
                     <label class="toggle-switch">
                         <input type="checkbox" ${ext.isActive ? 'checked' : ''} data-id="${ext.name}">
                         <span class="toggle-slider"></span>
-                    </label>  
+                    </label>    
+				   </div>
                 `;
                 extensionsContainer.appendChild(extCard);
             });
