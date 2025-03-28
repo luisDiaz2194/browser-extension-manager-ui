@@ -1,29 +1,50 @@
-*{
-	--background-black-primary: #050b21;
-	--color-black-primary: #ffffff;
-	--color-second-black-primary: #666a76;
-	--background-toogle-primary:#ef5e51;
-
-	--background-white-primary: #ebf3fd;
-	--color-white-primary: #00001b;
-	--color-second-white-primary: #6e7177;
-	--background-toogle-secondary:#c61f16;
-}
-
-body {
+:root {
+	/* Tema oscuro (default) */
+	--background-primary: #050b21;
+	--color-primary: #ffffff;
+	--color-secondary: #666a76;
+	--toggle-primary: #ef5e51;
+	--card-primary: #1f2436;
+	--button-bg: #2f354b;
+	--active-button-bg: #f15b55;
+	--active-button-color: #430915;
+	--border-color: #343949;
+	--status-color: #b3b7c2;
+	--slider-bg: #484e5e;
+	--config-bg: #2f354b;
+  }
+  
+  [data-theme="light"] {
+	/* Tema claro */
+	--background-primary: #ebf3fd;
+	--color-primary: #00001b;
+	--color-secondary: #6e7177;
+	--toggle-primary: #c61f16;
+	--card-primary: #fcfdff;
+	--button-bg: #eeeeed;
+	--active-button-bg: #ff7a75;
+	--active-button-color: #5a0a1a;
+	--border-color: #d1d5db;
+	--status-color: #5a5e6b;
+	--slider-bg: #d1d5db;
+	--config-bg: #eeeeed;
+  }
+  
+  body {
 	font-family: 'Segoe UI', sans-serif;
-	background-color: var(--background-black-primary);
+	background-color: var(--background-primary);
 	margin: 0;
 	padding: 20px;
-	color: var(--color-black-primary);
-	}
+	color: var(--color-primary);
+	transition: all 0.3s ease;
+  }
   
   .admin-container {
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 25px;
 	border-radius: 10px;
-	}
+  }
   
   .filter-tabs {
 	margin: 20px 0;
@@ -35,16 +56,17 @@ body {
 	padding: 8px 16px;
 	border: none;
 	border-radius: 20px;
-	background: #30354b;
+	background: var(--button-bg);
 	cursor: pointer;
 	transition: all 0.3s;
 	font-weight: 600;
-	}
+	color: var(--color-primary);
+  }
   
   .filter-btn.active {
-	background: #f15b55;
-	color: #430915;
-	}
+	background: var(--active-button-bg);
+	color: var(--active-button-color);
+  }
   
   .extensions-grid {
 	display: grid;
@@ -52,19 +74,17 @@ body {
 	gap: 10px;
 	}
   
-  .extension-card {
-	background: white;
-	border-radius: 8px;
-	padding: 15px;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-	display: flex;
-	align-items: center;
-	border-left: 4px solid #4a6cf7;
+  .ext-card {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	background: var(--card-primary);
+	padding: 10px;
+	border-radius: 14px;
+	transition: all 0.3s ease;
   }
   
   .extension-card.inactive {
 	opacity: 0.7;
-	border-left-color: #e1e5eb;
+	border-left-color: var(--border-color);
   }
   
   .extension-icon {
@@ -73,7 +93,7 @@ body {
 	margin-right: 15px;
 	border-radius: 6px;
 	object-fit: cover;
-	}
+  }
   
   .extension-info {
 	position: relative;
@@ -85,11 +105,12 @@ body {
   .extension-name {
 	font-weight: 600;
 	margin-bottom: 5px;
+	color: var(--color-primary);
   }
   
-  .extension-desc {
-	color: #64748b;
-	font-size: 0.9em;
+  .extension-description {
+	color: var(--color-secondary);
+	font-size: 14px;
   }
   
   .toggle-switch {
@@ -112,11 +133,11 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #484e5e;
+	background-color: var(--slider-bg);
 	transition: .4s;
 	border-radius: 24px;
 	width: 44px;
-	}
+  }
   
   .toggle-slider:before {
 	position: absolute;
@@ -131,77 +152,90 @@ body {
   }
   
   input:checked + .toggle-slider {
-	background-color: var(--background-toogle-primary);
-	}
+	background-color: var(--toggle-primary);
+  }
   
   input:checked + .toggle-slider:before {
 	transform: translateX(20px);
+  }
+  
+  .config {
+	display: flex;
+	justify-content: space-between;
+	background: var(--config-bg);
+	align-items: center;
+	flex-wrap: wrap;
+	color: var(--color-primary);
+	border-radius: 14px;
+	padding: 5px 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  button.configButton {
+	background: var(--config-bg) center no-repeat;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 14px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .content {
+	margin-top: 50px;
+  }
+  
+  .contentTopTitle {
+	font-weight: 700;
+	font-size: 27px;
+	color: var(--color-primary);
+  }
+  
+  .extension-status {
+	border-radius: 15px;
+	padding: 2px 15px;
+	border: 1px solid var(--border-color);
+	font-size: 14px;
+	color: var(--status-color);
+  }
+  
+  .contentTop {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+  }
+  
+  .ext-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+  }
+  @media screen and (max-width:720px) {
+	.extensions-grid {
+		grid-template-columns: repeat(auto-fill, minmax(47%, 1fr));
+		}
+		.config{
+			width: 100%;
+		}
+  }
+  @media screen and (max-width:480px) {
+	.extensions-grid {
+		grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+		}
+		.config{
+			width: 100%;
+		}
+  }
+  @media screen and (max-width: 320px) {
+	.admin-container{
+		padding: 5px;
 	}
+	.extensions-grid {
+		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+		}
+  }
 
-
-.config {
-    display: flex;
-    justify-content: space-between;
-    background: #1f2535;
-    align-items: center;
-    flex-wrap: wrap;
-    color: #ffffff;
-    border-radius: 14px;
-    padding: 5px 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-button.configButton {
-    background: url('./assets/images/icon-sun.svg') center no-repeat #2f354e;
-    width: 40px;
-    height: 40px;
-    border: gainsboro;
-    border-radius: 14px;
-    cursor: pointer;
-}
-
-.content {
-    margin-top: 50px;
-}
-
-span.contentTopTitle {
-    font-weight: 700;
-    font-size: 27px;
-}
-
-
-.clear {
-    clear: both;
-}
-
-span.extension-status {
-    border-radius: 15px;
-    padding: 2px 15px;
-    border: 1px solid #343949;
-    font-size: 14px;
-    color: #b3b7c2;
-}
-
-.ext-card {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background: #1f2436;
-    padding: 10px;
-    border-radius: 14px;
-}
-
-.contentTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.extension-description {
-    color: #666a76;
-    font-size: 14px;
-}
-.ext-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+  
