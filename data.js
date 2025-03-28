@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const extCard = document.createElement('div');
                 extCard.className = `ext-card ${ext.isActive ? '' : 'inactive'}`;
                 extCard.innerHTML = `
-                    <img src="${ext.logo}" alt="${ext.name}" class="extension-icon">
                     <div class="extension-info">
+					<img src="${ext.logo}" alt="${ext.name}" class="extension-icon">
                         <div class="extension-name">${ext.name}</div>
                         <div class="extension-description">${ext.description}</div>
                     </div>
