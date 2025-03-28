@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 		//Renderizar Extensiones
 		function renderExtensions(filter = 'all'){
 			extensionsContainer.innerHTML = '';
+			
 			const filtered = extensions.filter(ext => {
 				if (filter === 'all') return true;
 				return filter === 'active' ? ext.isActive : !ext.isActive;
